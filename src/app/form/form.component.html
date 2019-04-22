@@ -1,0 +1,95 @@
+<form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+
+  <h5 *ngIf="success" class="success">Customer properties saved!</h5>
+
+
+
+
+  <div class="form-group">
+    <label>Type:</label>
+    <span>{{ customer.type === 1 ? 'Small' : 'Big '  }}</span>
+
+  </div>
+
+  <div class="form-group">
+    <label>Name:</label>
+    <input class="form-control" type="text" formControlName="name" [disableControl]="disable">
+    <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
+      <div *ngIf="messageForm.controls.name.errors.required">This field is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Website url:</label>
+    <input class="form-control" type="text" formControlName="websiteUrl" [disableControl]="disable">
+  </div>
+
+  <div class="form-group" *ngIf="customer.type === 1">
+    <label>Number of Employees:</label>
+    <input class="form-control" type="text" formControlName="numberOfEmployees" [disableControl]="disable">
+    <div *ngIf="submitted && messageForm.controls.numberOfEmployees.errors" class="error">
+      <div *ngIf="messageForm.controls.numberOfEmployees.errors.required">This field is required</div>
+      <div *ngIf="messageForm.controls.numberOfEmployees.errors.min">Value should be bigger than 0</div>
+    </div>
+  </div>
+
+
+
+  <div class="form-group">
+    <label>Expire date:</label>
+
+    <input class="form-control" type="datetime-local" formControlName="contractExpiryDate" [disableControl]="disable">
+    <div *ngIf="submitted && messageForm.controls.contractExpiryDate.errors" class="error">
+      <div *ngIf="messageForm.controls.contractExpiryDate.errors.required">This field is required</div>
+      <div *ngIf="messageForm.controls.contractExpiryDate.errors.notToday">Date cannot be older than today</div>
+      <div *ngIf="messageForm.controls.contractExpiryDate.errors.lessThan">Date cannot be greater than {{years}} years from
+        today</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Country</label>
+
+
+    <select class="form-control" formControlName="country" [disableControl]="disable">
+      <option>-- Choose --</option>
+      <option>Denmark</option>
+      <option>Sweden</option>
+      <option>Norway</option>
+    </select>
+
+
+    <div *ngIf="submitted && messageForm.controls.country.errors" class="error">
+      <div *ngIf="messageForm.controls.country.errors.required">This field is required</div>
+    </div>
+  </div>
+
+  <div class="form-group" *ngIf="customer.type === 2">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="complianceChecked" value="option1"
+        formControlName="complianceChecked" [disableControl]="disable">
+      <label class="form-check-label" for="complianceChecked">Compliance</label>
+    </div>
+
+    <div *ngIf="submitted && messageForm.controls.complianceChecked.errors" class="error">
+      <div *ngIf="messageForm.controls.complianceChecked.errors.required">This field is required</div>      
+    </div>
+
+
+
+  </div>
+
+
+  <div class="form-group" *ngIf="customer.type === 2">
+      <label>Annual turnover:</label>
+      <input class="form-control" type="text" formControlName="annualTurnover" [disableControl]="disable">
+      <div *ngIf="submitted && messageForm.controls.annualTurnover.errors" class="error">
+        <div *ngIf="messageForm.controls.annualTurnover.errors.required">This field is required</div>
+        <div *ngIf="messageForm.controls.annualTurnover.errors.min">Value should be bigger than 0</div>
+      </div>
+    </div>
+
+
+
+  <button type="submit" class="btn btn-primary" *ngIf="!disable">Save</button>
+
+</form>

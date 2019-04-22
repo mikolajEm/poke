@@ -1,0 +1,57 @@
+<div style="margin-top: 5rem;">
+  <div class="container ">
+    <div class="row">
+      <div class="col-sm-12">
+
+        <h2>Customers</h2>
+        <h6>List of the customers</h6>
+        
+
+
+
+        <div class="card shadow">
+          <div class="card-body">
+
+            <div class="row">
+
+              <div class="col-sm col-md-12">
+
+                <table style="width:100%;">
+                  
+                    <tr>
+                      <th class="text-center">type</th>
+                      <th>name</th>
+                      <th class="d-none d-lg-table-cell">country</th>
+                      <th class="d-none d-lg-table-cell">websiteUrl</th>
+                      <th class="d-none d-lg-table-cell">expires</th>
+                      <th></th>
+                    </tr>
+                  
+                  <tr *ngFor="let customer of customers">
+                    <td class="text-center"><i class="material-icons" [ngClass]="customer.type === 1 ? 'small' : ''">person</i></td>
+                    <td><strong>{{customer.name}}</strong></td>
+                    <td class="d-none d-lg-table-cell">{{customer.country}}</td>
+                    <td class="d-none d-lg-table-cell"><a href="{{customer.websiteUrl}}" target="_blank">{{customer.websiteUrl}}</a></td>
+                    <td class="d-none d-lg-table-cell">{{customer.contractExpiryDate.replace(' ','') | date}}</td>
+                    <td><a routerLink="/details/{{customer._id}}" class="p-3"><i class="material-icons" title="more">more_horiz</i></a></td>
+                  </tr>
+
+
+                </table>
+
+               
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

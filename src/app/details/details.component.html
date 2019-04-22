@@ -1,0 +1,46 @@
+<div class="mt-5">
+  <div class="container ">
+    <div class="row">
+      <div class="col-sm-12">
+        <a routerLink="/"> < go back</a>
+        <div class="row mt-5">
+          <div class="col-sm-6">
+
+            <h2>Customer details</h2>
+          </div>
+          <div class="col-sm-6 text-right">
+              <button class="btn btn-primary" (click)="disable = false" *ngIf="disable">Edit</button>
+          </div>
+
+
+        </div>
+
+        <div class="card shadow">
+          <div class="card-body">
+
+            <div class="row">
+
+              <div class="col-sm col-md-6">
+
+
+                <div *ngIf="isLoaded">
+                  <app-form [customer]="customer" (onProp)="changed($event)" [disable]="disable"></app-form>
+                </div>
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

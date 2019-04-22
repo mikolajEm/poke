@@ -1,0 +1,16 @@
+@import './src/variables';
+
+td, th {
+    padding: 1rem;
+}
+tr + tr {
+    border-bottom: 1px dashed lighten($primary-oposite-color, 70%);
+    &:hover {
+        background: lighten($secondary-color, 50%);
+        
+    }
+    &:last-child {
+        border-bottom: 0px;
+    }
+    
+}
