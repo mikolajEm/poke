@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
+import { ModalComponent } from './modal/modal.component';
 
 
 
@@ -19,7 +20,7 @@ import { FooterComponent } from './footer/footer.component';
     AppComponent,
     NavComponent,
     HomeComponent,    
-    FooterComponent
+    FooterComponent, ModalComponent
   ],
   imports: [
     BrowserModule,

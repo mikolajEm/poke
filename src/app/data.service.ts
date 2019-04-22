@@ -37,12 +37,15 @@ export class DataService {
   // Methods
 
   
-  getCustomers() {
-    return this.http.get('https://api.pokemontcg.io/v1/cards?pageSize=6')
+  getCustomers(): Observable<formModel> {
+    return this.http.get<formModel>('https://api.pokemontcg.io/v1/cards?pageSize=6').pipe(
+      tap(_ => console.log(`fetched customers`)),
+      catchError(this.handleError<formModel>(`getProducts`))
+    );
   }
 
   getCustomer(id): Observable<formModel> {
-    return this.http.get<formModel>(`http://localhost:8080/customers/${id}`).pipe(
+    return this.http.get<formModel>(`https://api.pokemontcg.io/v1/cards/${id}`).pipe(
       tap(_ => console.log(`fetched customer`)),
       catchError(this.handleError<formModel>(`getProduct id=${id}`))
       

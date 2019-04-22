@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router} from '@angular/router';
 import { DataService } from '../data.service';
 
 
@@ -18,8 +18,15 @@ export class HomeComponent implements OnInit {
   customers: Object;
   shortenLink: String;
   fields: Object;
+  router: String;
 
-  constructor(private data: DataService) { }
+  constructor(private data: DataService, private _router: Router) { 
+    this.router = _router.url; 
+   }
+
+ 
+
+  
   
 
   ngOnInit() {
