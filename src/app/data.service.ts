@@ -38,7 +38,7 @@ export class DataService {
 
   
   getCustomers() {
-    return this.http.get('http://localhost:8080/customers/')
+    return this.http.get('https://api.pokemontcg.io/v1/cards?pageSize=6')
   }
 
   getCustomer(id): Observable<formModel> {

@@ -9,10 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
-import { FormComponent } from './form/form.component';
 import { FooterComponent } from './footer/footer.component';
-import { DetailsComponent } from './details/details.component';
-import { DisableDirective } from './disable.directive';
+
 
 
 
@@ -20,11 +18,8 @@ import { DisableDirective } from './disable.directive';
   declarations: [
     AppComponent,
     NavComponent,
-    HomeComponent,
-    FormComponent,
-    FooterComponent,
-    DetailsComponent,
-    DisableDirective
+    HomeComponent,    
+    FooterComponent
   ],
   imports: [
     BrowserModule,
