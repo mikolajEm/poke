@@ -1,10 +1,11 @@
-<div class="row">
 
-  <app-modal *ngIf="router.includes('details')"></app-modal>
 
-  <div class="col-sm col-md-4" *ngFor="let customer of customers?.cards">
+  <app-modal *ngIf="rut.includes('details')"></app-modal>
 
-    <!-- 
+
+  
+
+  <!-- 
                   
                   <tr *ngFor="let customer of customers.cards">
                     <td class="text-center"><i class="material-icons" [ngClass]="customer.type === 1 ? 'small' : ''">person</i></td>
@@ -15,18 +16,25 @@
                     <td><a routerLink="/details/{{customer._id}}" class="p-3"><i class="material-icons" title="more">more_horiz</i></a></td>
                   </tr>
 -->
+<div id="infinite-scroller" appInfiniteScroller scrollPerecnt="70" immediateCallback="true"
+[scrollCallback]="scrollCallback"> 
+<div class="row">
+  <div class="col-sm col-md-4" *ngFor="let item of news">
+
+    
 
 
 
     <div class="card">
-      <img src="{{customer.imageUrl}}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">{{customer.name}}</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-          card's content.</p>
-        <a routerLink="/details/{{customer.id}}" class="btn btn-primary">Go somewhere</a>
+      <img src="{{item.imageUrl}}" class="card-img-top" alt="...">
+      <div class="card-body text-center">
+        <h5 class="card-title">{{item.name}}</h5>
+        <p class="card-text">{{item.supertype}}</p>
+        <a (click)="modal()" routerLink="/details/{{item.id}}" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
+    
 
   </div>
+</div>
 </div>

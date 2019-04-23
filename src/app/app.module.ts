@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { InfiniteScrollerDirective } from './infinite-scroller.directive';
+import { HackerNewsService } from './hacker-news.service';
 
 
 
@@ -20,7 +22,8 @@ import { ModalComponent } from './modal/modal.component';
     AppComponent,
     NavComponent,
     HomeComponent,    
-    FooterComponent, ModalComponent
+    FooterComponent, ModalComponent,
+    InfiniteScrollerDirective
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { ModalComponent } from './modal/modal.component';
   exports: [
     
   ],
-  providers: [],
+  providers: [HackerNewsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

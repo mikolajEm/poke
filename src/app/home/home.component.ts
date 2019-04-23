@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router} from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
+import { HackerNewsService } from '../hacker-news.service';
+import { tap } from "rxjs/operators";
+
 
 
 
@@ -20,31 +23,65 @@ export class HomeComponent implements OnInit {
   fields: Object;
   router: String;
 
-  constructor(private data: DataService, private _router: Router) { 
-    this.router = _router.url; 
-   }
+  rut:String = '';
 
- 
+  currentPage: number = 1;
 
-  
-  
+  news: Array<any> = [];
+
+  scrollCallback;
+
+  constructor(
+    private data: DataService,
+    private _router: Router,
+    private route: ActivatedRoute,
+    private hackerNewsSerivce: HackerNewsService
+  ) {
+    this.router = _router.url;
+    this.scrollCallback = this.getStories.bind(this);
+  }
+
+
+  getStories() {
+    return this.hackerNewsSerivce.getLatestStories(this.currentPage).pipe(
+      tap(this.processData)
+    );
+  }
+
+  private processData = (news) => {
+    this.currentPage++;
+    this.news = this.news.concat(news.cards);
+    console.log(this.news)
+  }
+
+
+  modal() {
+    this.rut = window.location.href
+  } 
+
+
 
   ngOnInit() {
 
     this.data.getCustomers().subscribe(data => {
-      this.customers = data      
+      this.customers = data
       console.log(this.customers)
-      
+
     })
+    
 
   }
 
-  
+  ngOnChanges() {
+    this.rut = window.location.href
+  }
 
 
-  
 
-  
+
+
+
+
 }
 
 
