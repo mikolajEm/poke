@@ -32,6 +32,9 @@ export class InfiniteScrollerDirective implements AfterViewInit {
   scrollCallback;
 
   @Input()
+  spinner;
+
+  @Input()
   immediateCallback;
 
   @Input()
@@ -64,7 +67,8 @@ export class InfiniteScrollerDirective implements AfterViewInit {
       })),
       pairwise(),
       filter(positions => this.isUserScrollingDown(positions) && this.isScrollExpectedPercent(positions[1]))
-    )}
+    )
+  }
 
   private requestCallbackOnScroll() {
 
@@ -78,7 +82,7 @@ export class InfiniteScrollerDirective implements AfterViewInit {
 
     this.requestOnScroll$.pipe(
       exhaustMap(() => { return this.scrollCallback(); })
-      
+
     ).subscribe(() => { })
 
   }
@@ -88,7 +92,13 @@ export class InfiniteScrollerDirective implements AfterViewInit {
   }
 
   private isScrollExpectedPercent = (position) => {
-    return ((position.sT + position.cH) / position.sH) > (this.scrollPercent / 100);
+    if (this.spinner !== false) {
+      return ((position.sT + position.cH) / position.sH) > (this.scrollPercent / 100);
+    } else {
+      console.log('no more calls')
+    }
+
+
   }
 
 }

@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
+import { tap } from "rxjs/operators";
 
 @Component({
   selector: 'app-modal',
@@ -22,10 +23,12 @@ export class ModalComponent implements OnInit {
 
   question;
 
+  data: Object;
+
 
 
   constructor(
-    private data: DataService,
+    private DataService: DataService,
     private route: ActivatedRoute
   ) {
 
@@ -42,13 +45,14 @@ export class ModalComponent implements OnInit {
     }
 
 
-    this.data.getCustomer(this.id).subscribe(data => {
-
+    this.DataService.getPokemon(this.id).subscribe(data => {
       this.customer = data.card;
       console.log(data)
 
-
     })
+
+
+
 
 
 

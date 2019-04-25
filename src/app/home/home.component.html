@@ -14,12 +14,12 @@
                     <td><a routerLink="/details/{{customer._id}}" class="p-3"><i class="material-icons" title="more">more_horiz</i></a></td>
                   </tr>
 -->
-<div id="infinite-scroller" appInfiniteScroller scrollPerecnt="70" immediateCallback="true"
-  [scrollCallback]="scrollCallback">
+<div id="infinite-scroller" appInfiniteScroller scrollPerecnt="90" immediateCallback="true"
+  [scrollCallback]="scrollCallback" [spinner]="spinner">
   <div class="container py-5">
     <div class="row">
       <!-- <a (click)="showModal(item.id)" routerLink="/details/{{item.id}}"> -->
-      <div class="col-sm-6 col-md-4" *ngFor="let item of news">
+      <div class="col-sm-6 col-md-4" *ngFor="let item of pokemons">
         <div class="card my-2">
           <a (click)="showModal(item.id)">
             <div class="p-4">
@@ -35,11 +35,12 @@
 
       </div>
     </div>
-    <div class="lds-ellipsis mx-auto">
+    <div class="lds-ellipsis mx-auto" *ngIf="spinner">
       <div></div>
       <div></div>
       <div></div>
       <div></div>
     </div>
+    <div class="text-center py-4" *ngIf="!spinner"><p>...That's all I have :(</p></div>
   </div>
 </div>

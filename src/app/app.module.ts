@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InfiniteScrollerDirective } from './infinite-scroller.directive';
-import { HackerNewsService } from './hacker-news.service';
+import { DataService } from './data.service';
 
 
 
@@ -36,7 +36,7 @@ import { ModalComponent } from './modal/modal.component';
   exports: [
     
   ],
-  providers: [HackerNewsService],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
