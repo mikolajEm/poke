@@ -12,6 +12,6 @@ html {
 body {
   font-family: "Montserrat";
   font-size: 0.9rem;
-  background: url("./assets/img/bg2.jpg") center center no-repeat;
+  background: $secondary-color;
   background-size: cover;
 }

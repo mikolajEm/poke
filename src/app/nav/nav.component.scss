@@ -1,0 +1,17 @@
+@import './src/variables';
+
+header {
+    background: $primary-color;
+    position:fixed;
+    top:0;
+    width:100%;
+    color: $primary-oposite-color;
+    z-index:2;
+    & a {
+        color: $primary-oposite-color;
+        &:hover {
+            color: $primary-oposite-color;
+            text-decoration: none;
+        }
+    }
+}

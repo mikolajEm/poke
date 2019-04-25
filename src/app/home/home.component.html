@@ -1,11 +1,9 @@
+<app-modal *ngIf="modal" [pokeId]="id" (closeModal)="closedModal()"></app-modal>
 
 
-  <app-modal *ngIf="rut.includes('details')"></app-modal>
 
 
-  
-
-  <!-- 
+<!-- 
                   
                   <tr *ngFor="let customer of customers.cards">
                     <td class="text-center"><i class="material-icons" [ngClass]="customer.type === 1 ? 'small' : ''">person</i></td>
@@ -17,24 +15,31 @@
                   </tr>
 -->
 <div id="infinite-scroller" appInfiniteScroller scrollPerecnt="70" immediateCallback="true"
-[scrollCallback]="scrollCallback"> 
-<div class="row">
-  <div class="col-sm col-md-4" *ngFor="let item of news">
+  [scrollCallback]="scrollCallback">
+  <div class="container py-5">
+    <div class="row">
+      <!-- <a (click)="showModal(item.id)" routerLink="/details/{{item.id}}"> -->
+      <div class="col-sm-6 col-md-4" *ngFor="let item of news">
+        <div class="card my-2">
+          <a (click)="showModal(item.id)">
+            <div class="p-4">
+              <img src="{{item.imageUrl}}" class="card-img-top" alt="{{item.name}}">
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-title">{{item.name}}</h5>
+              <p class="card-text">{{item.supertype}}</p>
+            </div>
+          </a>
+        </div>
 
-    
 
-
-
-    <div class="card">
-      <img src="{{item.imageUrl}}" class="card-img-top" alt="...">
-      <div class="card-body text-center">
-        <h5 class="card-title">{{item.name}}</h5>
-        <p class="card-text">{{item.supertype}}</p>
-        <a (click)="modal()" routerLink="/details/{{item.id}}" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
-    
-
+    <div class="lds-ellipsis mx-auto">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   </div>
-</div>
 </div>

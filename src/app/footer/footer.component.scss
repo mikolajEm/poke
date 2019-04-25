@@ -1,0 +1,10 @@
+@import './src/variables';
+
+footer {
+    background: $primary-color;
+    position:fixed;
+    bottom:0;
+    width:100%;
+    color: $primary-oposite-color;
+    font-size: 0.7rem;
+}

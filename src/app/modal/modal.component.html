@@ -1,19 +1,54 @@
 <div class="modal fade show" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content p-3">
       <button type="button" class="close" aria-label="Close">
-        <a routerLink="/" aria-hidden="true">&times;</a>
+        <a (click)="closeModalMethod()" aria-hidden="true">&times;</a>
       </button>
 
       <div class="row">
-        <div class="col-sm-6"><img src="{{customer?.imageUrl}}"></div>
-        <div class="col-sm-6"><p>{{customer?.name}}</p></div>
+        <div class="col-sm-6">
+          <img src="{{customer?.imageUrlHiRes}}" class="w-100">
+        </div>
+        <div class="col-sm-6">
+          <p>
+            <span class="label">Name:</span>
+            <strong>{{customer?.name}}</strong>
+          </p>
+
+          <p>
+            <span class="label">Super type:</span>
+            <strong>{{customer?.supertype}}</strong>
+          </p>
+          <p>
+            <span class="label">Id:</span>
+            <strong>{{customer?.id}}</strong>
+          </p>
+          <p>
+            <span class="label">Series:</span>
+            <strong>{{customer?.series}}</strong>
+          </p>
+          <h5>
+            DETAILS
+          </h5>
+          <p>{{customer?.text}}</p>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 mt-4">
+          <h5>
+            SIMILAR POKEMONS
+          </h5>
+          <p></p>
+        </div>
+
+
       </div>
 
-      
-        
-      
-      
+
+
+
+
     </div>
   </div>
 </div>

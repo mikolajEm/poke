@@ -1,3 +1,23 @@
 .modal {
     display:block;
+    background: rgba(0,0,0,0.8)
+
+}
+
+.label {
+    display:block;
+    font-size:0.8rem;
+}
+
+.modal-dialog {
+    max-width:700px;
+}
+
+button.close {
+    
+    position: absolute;
+    top: 2px;
+    right: 8px;
+    font-size: 2rem;
+    z-index: 2;
 }

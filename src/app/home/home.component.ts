@@ -22,6 +22,9 @@ export class HomeComponent implements OnInit {
   shortenLink: String;
   fields: Object;
   router: String;
+  id: number;
+
+  modal:boolean = false;
 
   rut:String = '';
 
@@ -54,11 +57,22 @@ export class HomeComponent implements OnInit {
     console.log(this.news)
   }
 
+ 
+  showModal(id) {
 
-  modal() {
-    this.rut = window.location.href
+    this.modal = true
+    this.id = id;
+
+    window.history.pushState('details', 'Details', `/details/${this.id}`);
+
   } 
 
+  closedModal() {
+
+    this.modal = false;
+    window.history.pushState('home', 'Home', '/');
+
+  }
 
 
   ngOnInit() {
@@ -68,12 +82,18 @@ export class HomeComponent implements OnInit {
       console.log(this.customers)
 
     })
+
+    if (this.router.includes('details')) {
+      this.modal = true;
+    }
+
+    
     
 
   }
 
   ngOnChanges() {
-    this.rut = window.location.href
+    
   }
 
 
