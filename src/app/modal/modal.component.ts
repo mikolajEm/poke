@@ -30,6 +30,8 @@ export class ModalComponent implements OnInit {
 
   hpMax: number;
   hpMin: number;
+  onceMin: boolean = true;
+  onceMax: boolean = true;
 
 
 
@@ -46,7 +48,15 @@ export class ModalComponent implements OnInit {
 
   listOfThree(id, hp) {
     this.DataService.getSmallPokemonsList(this.pokemon, hp).subscribe(data => {
-      this.pokemons = data.cards;
+      console.log(data.cards);
+      if (this.pokemons.length < 3) {
+        
+        this.pokemons = this.pokemons.concat(data.cards);
+        console.log('in concat');
+      } else {
+        this.pokemons = data.cards;
+      }
+      
 
       console.log(this.pokemons);
 
@@ -60,11 +70,20 @@ export class ModalComponent implements OnInit {
       console.log(this.hpMax);
 
 
-      if (this.pokemons.length < 3 && this.hpMin != this.pokemon.hp) {
+      /*search for -10% */
 
-        console.log('call!')
+      if (this.pokemons.length < 3 && this.hpMin != this.pokemon.hp && this.onceMin) {
 
+        console.log('call for min')
+        this.onceMin = false;
         this.listOfThree(id, this.hpMin);
+
+      } else if (this.pokemons.length < 3 && this.hpMin != this.pokemon.hp && this.onceMax) {
+         /*search for +10% */
+
+        console.log('call for max')
+        this.onceMax = false;
+        this.listOfThree(id, this.hpMax);
 
       }
 
@@ -73,7 +92,8 @@ export class ModalComponent implements OnInit {
     })
   }
 
-  loadData(id) {
+  loadData(id) {    
+
     this.spinner = true;
     this.DataService.getPokemon(id).subscribe(data => {
       this.pokemon = data.card;
@@ -86,6 +106,9 @@ export class ModalComponent implements OnInit {
       if (this.pokemon.supertype === 'Pokémon') {
 
         /* callback to the list of 3 */
+
+        this.onceMin = true;
+        this.onceMax = true;
 
         this.listOfThree(id, this.pokemon.hp);
 

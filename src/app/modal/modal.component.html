@@ -98,7 +98,7 @@
             SIMILAR POKEMONS:
           </h5>
           <div class="row">
-            <div class="col-sm-6 col-md-4" *ngFor="let item of pokemons">
+            <div class="col-sm-6 col-md-4" *ngFor="let item of pokemons | slice:0:3;">
               <div class="card my-2">
                 <a (click)="loadData(item.id)">
                   <div class="p-4">

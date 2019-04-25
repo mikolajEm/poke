@@ -52,13 +52,13 @@ export class HomeComponent implements OnInit {
 
   private processData = (pokemons) => {
 
-    console.log(pokemons.cards)
+    
     if (pokemons.cards.length === 0) {
       this.spinner = false;     
     }
     this.currentPage++;
     this.pokemons = this.pokemons.concat(pokemons.cards);
-    console.log(this.pokemons)
+    
   }
 
  
