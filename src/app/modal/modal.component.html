@@ -1,3 +1,13 @@
+<div class="spinner-overlay" *ngIf="spinner">
+  <div class="lds-ellipsis mx-auto">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+</div>
+
 <div class="modal fade show" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content p-3">
@@ -7,39 +17,103 @@
 
       <div class="row">
         <div class="col-sm-6">
-          <img src="{{customer?.imageUrlHiRes}}" class="w-100">
+          <img src="{{pokemon?.imageUrlHiRes}}" class="w-100">
         </div>
         <div class="col-sm-6">
-          <p>
-            <span class="label">Name:</span>
-            <strong>{{customer?.name}}</strong>
-          </p>
 
-          <p>
-            <span class="label">Super type:</span>
-            <strong>{{customer?.supertype}}</strong>
-          </p>
-          <p>
-            <span class="label">Id:</span>
-            <strong>{{customer?.id}}</strong>
-          </p>
-          <p>
-            <span class="label">Series:</span>
-            <strong>{{customer?.series}}</strong>
-          </p>
+
+          <h2><strong>{{pokemon?.name}}</strong></h2>
+
+
+
+          <h5>{{pokemon?.supertype}}</h5>
+
+
+          <div class="row pt-3">
+            <div class="col-md-6">
+
+              <p>
+                <span class="label">Id: </span>
+                <strong>{{pokemon?.id}}</strong>
+              </p>
+              <p>
+                <span class="label">Series: </span>
+                <strong>{{pokemon?.series || '--'}}</strong>
+              </p>
+              <p>
+                <span class="label">Types: </span>
+                <strong>{{pokemon?.types || '--'}}</strong>
+              </p>
+              <p>
+                <span class="label">Rarity: </span>
+                <strong>{{pokemon?.rarity || '--'}}</strong>
+              </p>
+
+
+              <div>
+                <span class="label">Weaknesses: </span>
+                <ul *ngFor="let item of pokemon?.weaknesses">
+                  <li>{{item.name || 'none'}} - {{item.damage || 'none'}}</li>
+                </ul>
+              </div>
+            </div>
+
+
+            <div class="col-md-6">
+              <p>
+                <span class="label">National pokedex number: </span>
+                <strong>{{pokemon?.nationalPokedexNumber || '--'}}</strong>
+              </p>
+
+              <p>
+                <span class="label">HP: </span>
+                <strong>{{pokemon?.hp || '--'}}</strong>
+              </p>
+              <p>
+                <span class="label">Set: </span>
+                <strong>{{pokemon?.set || '--'}}</strong>
+              </p>
+              <p>
+                <span class="label">Evolves from: </span>
+                <strong>{{pokemon?.evolvesFrom || '--'}}</strong>
+              </p>
+              <div>
+                <span class="label">Attacks: </span>
+                <ul>
+                  <li *ngFor="let item of pokemon?.attacks">{{item.name || 'none'}} - {{item.damage || 'none'}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
           <h5>
             DETAILS
           </h5>
-          <p>{{customer?.text}}</p>
+          <p>{{pokemon?.text || "-- no details --"}}</p>
 
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-12 mt-4">
+      <div class="row" *ngIf="pokemon?.supertype === 'Pokémon'">
+        <div class="col-sm-12 mt-5">
           <h5>
-            SIMILAR POKEMONS
+            SIMILAR POKEMONS:
           </h5>
-          <p></p>
+          <div class="row">
+            <div class="col-sm-6 col-md-4" *ngFor="let item of pokemons">
+              <div class="card my-2">
+                <a (click)="loadData(item.id)">
+                  <div class="p-4">
+                    <img src="{{item.imageUrl}}" class="card-img-top" alt="{{item.name}}">
+                  </div>
+                  <div class="card-body text-center">
+                    <h5 class="card-title">{{item.name}}</h5>
+                    <p class="card-text">{{item.supertype}}</p>
+                  </div>
+                </a>
+              </div>
+
+
+            </div>
+          </div>
         </div>
 
 

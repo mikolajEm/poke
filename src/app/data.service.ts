@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
+import { formModel } from './form.model';
 
 const BASE_URL = 'https://api.pokemontcg.io/v1';
 
 @Injectable()
 export class DataService {
+
+  
   
   constructor(private http: HttpClient) { }
 
@@ -25,14 +28,15 @@ export class DataService {
   
 
   getPokemonsList(page: number = 1) {
-    return this.http.get(`${BASE_URL}/cards?name=charizard&pageSize=20&page=${page}`);
+    return this.http.get(`${BASE_URL}/cards?pageSize=20&page=${page}`);
   }
 
-  getPokemon(id){
-    return this.http.get(`https://api.pokemontcg.io/v1/cards/${id}`).pipe(
-      tap(_ => console.log(`fetched pokemon`)),
-      catchError(this.handleError(`get Pokemon id=${id}`))
-      
-    );
+  getSmallPokemonsList(pokemon: any): Observable<{cards: Object}> {
+    
+    return this.http.get<{cards: Object}>(`${BASE_URL}/cards?pageSize=4&types=${pokemon.types}&rarity=${pokemon.rarity}&hp=${pokemon.hp}`);
+  }
+
+  getPokemon(id): Observable<formModel>{
+    return this.http.get<formModel>(`${BASE_URL}/cards/${id}`)
   }
 }

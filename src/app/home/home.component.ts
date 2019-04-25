@@ -65,8 +65,7 @@ export class HomeComponent implements OnInit {
   showModal(id) {
 
     this.modal = true
-    this.id = id;
-    window.history.pushState('details', 'Details', `/details/${this.id}`);
+    this.id = id;    
 
   } 
 

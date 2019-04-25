@@ -18,12 +18,18 @@ export class ModalComponent implements OnInit {
   @Output() closeModal = new EventEmitter();
 
 
-  customer: Object;
+  pokemon: any
+  pokemons: any;
   id: String = this.route.snapshot.paramMap.get('id');
 
   question;
 
   data: Object;
+
+  spinner: boolean = false;
+
+  hpMax: number;
+  hpMin: number;
 
 
 
@@ -38,18 +44,72 @@ export class ModalComponent implements OnInit {
     this.closeModal.emit(true);
   }
 
+  listOfThree(id) {
+    this.DataService.getSmallPokemonsList(this.pokemon).subscribe(data => {
+      this.pokemons = data.cards;
+
+      this.pokemons = this.pokemons.filter(poke => poke.id !== id);
+
+
+
+      this.hpMin = this.pokemon.hp * 0.9;
+      console.log(this.hpMin);
+      this.hpMax = this.pokemon.hp * 1.1;
+      console.log(this.hpMax);
+
+
+      
+      if (this.pokemons.length < 3) {
+
+      }
+
+      this.spinner = false;
+        
+    })
+  }
+
+  loadData(id) {
+    this.spinner = true;
+    this.DataService.getPokemon(id).subscribe(data => {
+      this.pokemon = data.card;    
+      this.spinner = false;
+
+      
+
+      window.history.pushState('details', 'Details', `/details/${id}`);
+
+      if (this.pokemon.supertype === 'Pokémon') { 
+
+      /* callback to the list of 3 */ 
+      
+      this.listOfThree(id);
+
+    }
+
+
+
+    })
+  }
+
+  
+
+
   ngOnInit() {
 
+    
     if (this.pokeId !== undefined) {
       this.id = this.pokeId;
     }
 
 
-    this.DataService.getPokemon(this.id).subscribe(data => {
-      this.customer = data.card;
-      console.log(data)
+    this.loadData(this.id);
 
-    })
+
+    
+
+    
+
+    
 
 
 
