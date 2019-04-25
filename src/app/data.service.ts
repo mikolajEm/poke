@@ -31,9 +31,9 @@ export class DataService {
     return this.http.get(`${BASE_URL}/cards?pageSize=20&page=${page}`);
   }
 
-  getSmallPokemonsList(pokemon: any): Observable<{cards: Object}> {
+  getSmallPokemonsList(pokemon: any, hp: any): Observable<{cards: Object}> {
     
-    return this.http.get<{cards: Object}>(`${BASE_URL}/cards?pageSize=4&types=${pokemon.types}&rarity=${pokemon.rarity}&hp=${pokemon.hp}`);
+    return this.http.get<{cards: Object}>(`${BASE_URL}/cards?pageSize=4&types=${pokemon.types}&rarity=${pokemon.rarity}&hp=${hp}`);
   }
 
   getPokemon(id): Observable<formModel>{
