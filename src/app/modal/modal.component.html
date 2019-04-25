@@ -53,7 +53,7 @@
               <div>
                 <span class="label">Weaknesses: </span>
                 <ul *ngFor="let item of pokemon?.weaknesses">
-                  <li>{{item.name || 'none'}} - {{item.damage || 'none'}}</li>
+                  <li>{{item.type || 'none'}} - {{item.value || 'none'}}</li>
                 </ul>
               </div>
             </div>
