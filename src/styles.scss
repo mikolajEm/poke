@@ -1,4 +1,5 @@
-
+@import url('https://fonts.googleapis.com/css?family=Wendy+One');
+@import url('https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe');
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
 
 @import "variables";
@@ -9,11 +10,29 @@ html {
   margin: 0 auto;
 }
 
+h1, h2, h3, h4, h5 {
+  font-family: 'Wendy One', sans-serif;
+}
+
 body {
   font-family: "Montserrat";
   font-size: 0.9rem;
   background: $secondary-color;
-  background-size: cover;
+  
+  background: url(/assets/img/bg.png),linear-gradient(to right, lighten($secondary-color, 10%) 0%, lighten($secondary-color,30%) 100%);
+}
+
+.logo img {
+width: 150px;
+}
+
+
+.pb-10, .py-10 {
+  padding-bottom: 6rem!important;
+}
+
+.pt-10, .py-10 {
+  padding-top: 6rem!important;
 }
 
 

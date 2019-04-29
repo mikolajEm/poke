@@ -1,8 +1,12 @@
+@import './src/variables';
+
 .modal {
     display:block;
     background: rgba(0,0,0,0.8);
     overflow:auto;
-
+}
+.modal-content {
+    background: $card-color;
 }
 
 .label {
@@ -24,12 +28,17 @@ button.close {
 }
 
 .card {
-    cursor:pointer;
+    box-shadow: 3px 3px 10px 0px #797979;
+    cursor: pointer;
+    background: $card-color;
+    color: $card-oposite-color;
     &:hover {
-        opacity: 0.9;
+      opacity: 0.8;
     }
-    
-}
+  }
+  .card-body {
+    padding-top:0;
+  }
 
 .spinner-overlay {
     position:fixed;

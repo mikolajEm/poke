@@ -9,16 +9,28 @@
     top:0;
     left:0;
     overflow-y: scroll;
+    &:before {
+      content: "";
+      background: url(/assets/img/throw.png);
+      background-size: 900px;
+      width:900px;
+      height:400px;
+      display:block;
+      position:fixed;
+      bottom:0;
+      left:0;
+    }
   
-  }  
-
-  .card:hover {
-    opacity: 0.8;
   }
 
   .card {
-    box-shadow: 3px 3px 10px 0px #cdcdcd;
-    cursor:pointer;
+    box-shadow: 3px 3px 10px 0px #797979;
+    cursor: pointer;
+    background: $card-color;
+    color: $card-oposite-color;
+    &:hover {
+      opacity: 0.8;
+    }
   }
   .card-body {
     padding-top:0;
