@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { ModalComponent } from './modal/modal.component';
 import { CardComponent } from './card/card.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 
 
@@ -25,7 +26,8 @@ import { CardComponent } from './card/card.component';
     HomeComponent,    
     FooterComponent, ModalComponent,
     InfiniteScrollerDirective,
-    CardComponent
+    CardComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
