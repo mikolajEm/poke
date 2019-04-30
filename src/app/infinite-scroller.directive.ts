@@ -92,7 +92,6 @@ export class InfiniteScrollerDirective implements AfterViewInit {
   }
 
   private isUserScrollingDown = (positions) => {
-    console.log(positions);
     return positions[0].sT < positions[1].sT;
     
   }

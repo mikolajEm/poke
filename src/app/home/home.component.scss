@@ -4,10 +4,7 @@
     height: 100%;
     width: 100%;
     
-    padding: 0;
-    position: absolute;
-    top:0;
-    left:0;
+    padding: 0;    
     &:before {
       content: "";
       background: url(/assets/img/throw.png);
