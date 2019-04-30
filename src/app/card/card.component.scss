@@ -1,0 +1,14 @@
+@import './src/variables';
+
+.card {
+    box-shadow: 3px 3px 10px 0px #797979;
+    cursor: pointer;
+    background: $card-color;
+    color: $card-oposite-color;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  .card-body {
+    padding-top:0;
+  }

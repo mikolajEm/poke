@@ -92,16 +92,16 @@ export class ModalComponent implements OnInit {
     })
   }
 
-  loadData(id) {    
+  showModal(pokeId) {    
 
     this.spinner = true;
-    this.DataService.getPokemon(id).subscribe(data => {
+    this.DataService.getPokemon(pokeId).subscribe(data => {
       this.pokemon = data.card;
       this.spinner = false;
 
 
 
-      window.history.pushState('details', 'Details', `/details/${id}`);
+      window.history.pushState('details', 'Details', `/details/${pokeId}`);
 
       if (this.pokemon.supertype === 'Pokémon') {
 
@@ -110,7 +110,7 @@ export class ModalComponent implements OnInit {
         this.onceMin = true;
         this.onceMax = true;
 
-        this.listOfThree(id, this.pokemon.hp);
+        this.listOfThree(pokeId, this.pokemon.hp);
 
       }
 
@@ -130,7 +130,7 @@ export class ModalComponent implements OnInit {
     }
 
 
-    this.loadData(this.id);
+    this.showModal(this.id);
 
 
 

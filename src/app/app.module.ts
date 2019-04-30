@@ -13,6 +13,7 @@ import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { ModalComponent } from './modal/modal.component';
+import { CardComponent } from './card/card.component';
 
 
 
@@ -23,7 +24,8 @@ import { ModalComponent } from './modal/modal.component';
     NavComponent,
     HomeComponent,    
     FooterComponent, ModalComponent,
-    InfiniteScrollerDirective
+    InfiniteScrollerDirective,
+    CardComponent
   ],
   imports: [
     BrowserModule,

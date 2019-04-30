@@ -62,10 +62,10 @@ export class HomeComponent implements OnInit {
   }
 
  
-  showModal(id) {
+  showModal(pokeId) {
 
-    this.modal = true
-    this.id = id;    
+    this.modal = true;
+    this.id = pokeId;    
 
   } 
 
