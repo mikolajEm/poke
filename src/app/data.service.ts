@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
-import { formModel } from './form.model';
+import { Observable, of, EMPTY, throwError } from 'rxjs';
+import {Router} from "@angular/router";
+
+
+
+
 
 const BASE_URL = 'https://api.pokemontcg.io/v1';
 
@@ -11,7 +15,7 @@ export class DataService {
 
   
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
 
   private handleError<T> (operation = 'operation', result?: T) {
@@ -38,7 +42,16 @@ export class DataService {
     
   }
 
-  getPokemon(id): Observable<formModel>{
-    return this.http.get<formModel>(`${BASE_URL}/cards/${id}`)
+  getPokemon(id): Observable<{card: Object}>{
+    return this.http.get<{card: Object}>(`${BASE_URL}/cards/${id}`).pipe(
+    catchError(error => {
+      if (error instanceof HttpErrorResponse && error.status == 404) {
+          this.router.navigateByUrl('/not-found', {replaceUrl: true});
+
+          return EMPTY;
+      }
+      else
+          return throwError(error);
+  }));
   }
 }
