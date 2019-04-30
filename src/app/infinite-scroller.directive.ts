@@ -1,7 +1,7 @@
-import { Directive, AfterViewInit, ElementRef, Input } from '@angular/core';
+import { Directive, AfterViewInit, Input } from '@angular/core';
 
-import { Observable, of, Subject, Subscription, fromEvent } from 'rxjs';
-import { map, filter, pairwise, startWith, exhaustMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { fromEvent } from 'rxjs';
+import { map, filter, pairwise, startWith, exhaustMap} from 'rxjs/operators';
 
 interface ScrollPosition {
   sH: number;
@@ -38,11 +38,15 @@ export class InfiniteScrollerDirective implements AfterViewInit {
   immediateCallback;
 
   @Input()
-  scrollPercent = 70;
+  scrollPercent = 80;
 
-  constructor(private elm: ElementRef) { }
+  constructor() { }
+
+  
 
   ngAfterViewInit() {
+
+    
 
     this.registerScrollEvent();
 
@@ -53,17 +57,17 @@ export class InfiniteScrollerDirective implements AfterViewInit {
   }
 
   private registerScrollEvent() {
-
-    this.scrollEvent$ = fromEvent(this.elm.nativeElement, 'scroll');
+    
+    this.scrollEvent$ = fromEvent(window.document, 'scroll');
 
   }
 
   private streamScrollEvents() {
     this.userScrolledDown$ = this.scrollEvent$.pipe(
-      map((e: any): ScrollPosition => ({
-        sH: e.target.scrollHeight,
-        sT: e.target.scrollTop,
-        cH: e.target.clientHeight
+      map((): ScrollPosition => ({
+        sH: document.documentElement.scrollHeight,
+        sT: document.documentElement.scrollTop,
+        cH: document.documentElement.clientHeight
       })),
       pairwise(),
       filter(positions => this.isUserScrollingDown(positions) && this.isScrollExpectedPercent(positions[1]))
@@ -88,7 +92,9 @@ export class InfiniteScrollerDirective implements AfterViewInit {
   }
 
   private isUserScrollingDown = (positions) => {
+    console.log(positions);
     return positions[0].sT < positions[1].sT;
+    
   }
 
   private isScrollExpectedPercent = (position) => {

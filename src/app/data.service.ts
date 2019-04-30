@@ -28,8 +28,8 @@ export class DataService {
   
 
   getPokemonsList(page: number = 1) {
-    //return this.http.get(`${BASE_URL}/cards?pageSize=20&page=${page}`);
-    return this.http.get(`/assets/download.json`);
+    return this.http.get(`${BASE_URL}/cards?pageSize=20&page=${page}`);
+    //return this.http.get(`/assets/download.json`);
   }
 
   getSmallPokemonsList(pokemon: any, hp: any): Observable<{cards: Object}> {
