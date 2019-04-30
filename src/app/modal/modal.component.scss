@@ -9,8 +9,7 @@
     background: $card-color;
 }
 
-.label {
-    
+.label {    
     font-size:0.8rem;
 }
 
@@ -26,19 +25,6 @@ button.close {
     font-size: 2rem;
     z-index: 2;
 }
-
-.card {
-    box-shadow: 3px 3px 10px 0px #797979;
-    cursor: pointer;
-    background: $card-color;
-    color: $card-oposite-color;
-    &:hover {
-      opacity: 0.8;
-    }
-  }
-  .card-body {
-    padding-top:0;
-  }
 
 .spinner-overlay {
     position:fixed;

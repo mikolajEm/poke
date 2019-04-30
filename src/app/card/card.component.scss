@@ -5,10 +5,28 @@
     cursor: pointer;
     background: $card-color;
     color: $card-oposite-color;
+    overflow:hidden;
     &:hover {
       opacity: 0.8;
     }
   }
   .card-body {
     padding-top:0;
+  }
+
+  .corner {
+    background: $primary-color;    
+    
+    text-align: center;
+    width: 100%;;    
+    height:5px;
+    position: absolute;
+    top:0;
+    left:0;
+    &.T {
+        background: $success-color;
+    }
+    &.E {
+        background: $alert-color;
+    }
   }

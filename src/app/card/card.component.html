@@ -1,5 +1,6 @@
 <div class="card my-2">
     <a (click)="showModal(data.id)">
+      <div class="corner {{data.supertype.charAt(0)}}" ></div>
       <div class="p-4">
         <img src="{{data.imageUrl}}" class="card-img-top" alt="{{data.name}}">
       </div>
