@@ -8,6 +8,7 @@ import { tap } from "rxjs/operators";
 
 
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -32,7 +33,12 @@ export class HomeComponent implements OnInit {
 
   scrollCallback;
 
+  loadAgain;
+
   spinner:boolean = true;
+
+  superType: string = '';
+  name: string = '';
 
   constructor(    
     private _router: Router,
@@ -41,20 +47,25 @@ export class HomeComponent implements OnInit {
   ) {
     this.router = _router.url;
     this.scrollCallback = this.getPokemons.bind(this);
+    
   }
 
 
   getPokemons() {
-    return this.DataService.getPokemonsList(this.currentPage).pipe(
+    console.log('xxx');
+    return this.DataService.getPokemonsList(this.currentPage, this.superType, this.name).pipe(
       tap(this.processData)
     );
+    
   }
 
   private processData = (pokemons) => {
 
-    
-    if (pokemons.cards.length === 0) {
+    console.log('process');
+    if (pokemons.cards.length < 20) {
       this.spinner = false;     
+    } else {
+      this.spinner = true;
     }
     this.currentPage++;
     this.pokemons = this.pokemons.concat(pokemons.cards);
@@ -75,6 +86,18 @@ export class HomeComponent implements OnInit {
     window.history.pushState('home', 'Home', '/');
 
   }
+
+  paramsSearch(params:any) {
+    this.currentPage = 1;
+    this.pokemons = [];
+    this.superType = params.supertype || this.superType;
+    this.name = params.name || this.name;
+    this.scrollCallback().subscribe(() => { });
+  }
+  
+  
+
+
 
 
   ngOnInit() {

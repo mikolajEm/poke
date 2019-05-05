@@ -1,0 +1,11 @@
+<mat-form-field>
+    <mat-label>Super Type</mat-label>
+    <mat-select [(value)]="params.supertype" (valueChange)="valueChange()">
+      <mat-option *ngFor="let supertype of supertypes" [value]="supertype.value">
+        {{supertype.viewValue}}
+      </mat-option>
+    </mat-select>
+
+    
+  </mat-form-field>
+  

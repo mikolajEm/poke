@@ -31,8 +31,8 @@ export class DataService {
 
   
 
-  getPokemonsList(page: number = 1) {
-    return this.http.get(`${BASE_URL}/cards?pageSize=20&page=${page}`);
+  getPokemonsList(page: number = 1, superType, name) {
+    return this.http.get(`${BASE_URL}/cards?pageSize=20&page=${page}&supertype=${superType}&name=${name}`);
     //return this.http.get(`/assets/download.json`);
   }
 

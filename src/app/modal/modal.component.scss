@@ -1,5 +1,8 @@
 @import './src/variables';
 
+body {
+    overflow: hidden;
+}
 .modal {
     display:block;
     background: rgba(0,0,0,0.8);
