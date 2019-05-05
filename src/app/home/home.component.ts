@@ -76,7 +76,9 @@ export class HomeComponent implements OnInit {
   showModal(pokeId) {
 
     this.modal = true;
-    this.id = pokeId;    
+    this.id = pokeId;
+    
+    document.body.className = "o-h";
 
   } 
 
@@ -84,6 +86,8 @@ export class HomeComponent implements OnInit {
 
     this.modal = false;
     window.history.pushState('home', 'Home', '/');
+
+    document.body.className = "";
 
   }
 
@@ -105,6 +109,7 @@ export class HomeComponent implements OnInit {
 
     if (this.router.includes('details')) {
       this.modal = true;
+      document.body.className = "o-h";
     }
 
 

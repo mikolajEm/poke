@@ -11,7 +11,7 @@
   
 
 </div>
-<div id="infinite-scroller" appInfiniteScroller scrollPercent="100" immediateCallback="true"
+<div id="infinite-scroller" appInfiniteScroller scrollPercent="90" immediateCallback="true"
   [scrollCallback]="scrollCallback" [spinner]="spinner">
 
   <div class="container py-2">
@@ -23,13 +23,13 @@
 
       </div>
     </div>
-    <div class="lds-ellipsis mx-auto" *ngIf="spinner">
+    <div class="lds-ellipsis mx-auto zi-2 p-r" *ngIf="spinner">
       <div></div>
       <div></div>
       <div></div>
       <div></div>
     </div>
-    <div class="text-center py-4" *ngIf="!spinner">
+    <div class="text-center py-4 zi-2 p-r" *ngIf="!spinner">
       <p>...That's all I have :(</p>
     </div>
   </div>

@@ -20,8 +20,7 @@ export class InputComponent implements OnInit {
   constructor() { }
 
   valueChange() {
-    this.paramsSearch.emit(this.params);
-    console.log(this.params)
+    this.paramsSearch.emit(this.params);    
   }
 
   ngOnInit() {
