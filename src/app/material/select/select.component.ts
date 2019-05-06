@@ -8,6 +8,11 @@ export interface Supertypes {
   viewValue: string;
 }
 
+export interface Params {
+  supertype: string;
+  name: string;
+}
+
 
 
 
@@ -25,7 +30,7 @@ export class SelectComponent implements OnInit {
 
   @Output() paramsSearch = new EventEmitter();
 
-  params: object = {
+  params: Params = {
     supertype: null,
     name: ''
   };
