@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
 
 
   getPokemons() {
-    console.log('xxx');
+    
     return this.DataService.getPokemonsList(this.currentPage, this.superType, this.name).pipe(
       tap(this.processData)
     );
