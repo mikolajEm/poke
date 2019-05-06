@@ -94,7 +94,9 @@ export class HomeComponent implements OnInit {
   paramsSearch(params:any) {
     this.currentPage = 1;
     this.pokemons = [];
-    this.superType = params.supertype || this.superType;
+    if(params.supertype !== null) {
+      this.superType = params.supertype;
+    }    
     this.name = params.name || this.name;
     this.scrollCallback().subscribe(() => { });
   }
