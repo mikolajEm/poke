@@ -3,12 +3,19 @@
 <div class="filters  pt-15">
   <div class="container">
 
-      <material-select (paramsSearch)="paramsSearch($event)"></material-select>
-      <material-input (paramsSearch)="paramsSearch($event)"></material-input>
-     
+    <div class="row">
+      <div class="col-auto">
+        <material-select (paramsSearch)="paramsSearch($event)"></material-select>
+      </div>
+      <div class="col-auto">
+        <material-input (paramsSearch)="paramsSearch($event)"></material-input>
+      </div>
+
+    </div>
+
 
   </div>
-  
+
 
 </div>
 <div id="infinite-scroller" appInfiniteScroller scrollPercent="90" immediateCallback="true"
